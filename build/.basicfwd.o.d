@@ -1,4 +1,4 @@
-dep_basicfwd.o = /home/khwarizmi/dpdk/examples/skeleton/basicfwd.c \
+dep_basicfwd.o = /home/khwarizmi/dpdk/examples/my_skelton/basicfwd.c \
  /usr/include/stdc-predef.h \
  /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/rte_config.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
@@ -150,4 +150,19 @@ dep_basicfwd.o = /home/khwarizmi/dpdk/examples/skeleton/basicfwd.c \
  /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/rte_eth_ctrl.h \
  /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/rte_dev_info.h \
  /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/rte_cycles.h \
- /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/generic/rte_cycles.h
+ /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/generic/rte_cycles.h \
+ /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/rte_hexdump.h \
+ /home/khwarizmi/dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h \
+ /usr/include/arpa/inet.h /usr/include/netinet/in.h \
+ /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /usr/include/x86_64-linux-gnu/sys/uio.h \
+ /usr/include/x86_64-linux-gnu/bits/uio.h \
+ /usr/include/x86_64-linux-gnu/bits/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/socket_type.h \
+ /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+ /usr/include/x86_64-linux-gnu/asm/socket.h \
+ /usr/include/asm-generic/socket.h \
+ /usr/include/x86_64-linux-gnu/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/x86_64-linux-gnu/bits/socket2.h \
+ /usr/include/x86_64-linux-gnu/bits/in.h

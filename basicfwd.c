@@ -39,6 +39,12 @@
 #include <rte_lcore.h>
 #include <rte_mbuf.h>
 
+#include<rte_hexdump.h>
+#include <rte_ether.h>
+
+#include<arpa/inet.h>
+//#include<netinet/if_ether.h>
+
 #define RX_RING_SIZE 128
 #define TX_RING_SIZE 512
 
@@ -156,23 +162,29 @@ lcore_main(void)
 			if (unlikely(nb_rx == 0))
 				continue;
 
-			
-			//printf("%02x %02x\n", bufs[0], bufs[1]);
-
 			/* Send burst of TX packets, to second port of pair. */
-			//const uint16_t nb_tx = rte_eth_tx_burst(port ^ 1, 0,
-			//		bufs, nb_rx);
 			int i;
 			for (i = 0; i < nb_rx; i++){
-				const uint_16 nb_tx = rte_eth_tx_burst(port ^ 1, 0, bufs, 1);
+				uint8_t *p = rte_pktmbuf_mtod(bufs[i], uint8_t*);
+				size_t size = rte_pktmbuf_pkt_len(bufs[i]);
+
+				struct ether_hdr *eth;
+				eth = (struct ether_hdr *) p;
+				if(ntohs(eth->ether_type) == 0x0806){
+					rte_hexdump(stdout, "", (const void *)p ,size);
+					rte_pktmbuf_free(bufs[i]);
+					continue;
+				}
+				
+			rte_eth_tx_burst(port ^ 1, 0, &bufs[i], 1);
 			}
 
 			/* Free any unsent packets. */
-			if (unlikely(nb_tx < nb_rx)) {
+			/*if (unlikely(nb_tx < nb_rx)) {
 				uint16_t buf;
 				for (buf = nb_tx; buf < nb_rx; buf++)
 					rte_pktmbuf_free(bufs[buf]);
-			}
+			}*/
 		}
 	}
 }
